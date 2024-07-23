@@ -71,7 +71,7 @@ build {
   sources = ["source.virtualbox-iso.debian"]
   provisioner "shell-local" {
     environment_vars = [
-      "VM_NAME=${var.vm_name}"
+      "VM_NAME=${local.vm_name}"
     ]
     script = "./scripts/vboxsf.sh"
   }
