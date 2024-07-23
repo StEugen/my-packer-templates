@@ -15,7 +15,7 @@ variable "version" {
 
 variable "iso" {
   type    = string
-  default = "debian-12.0.0-amd64-DVD-1.iso"
+  default = "debian-12.6.0-amd64-DVD-1.iso"
 }
 
 variable "name"{
@@ -25,7 +25,7 @@ variable "name"{
 
 variable "checksum" {
   type    = string
-  default = "85042209e89908d5b59a968ff1be3c54415fa23015bf015562bad8d22452fa80"
+  default = "856daaf85bcc538ae9c5d011eea4c84864157b3397062586b6f59e938eeb010d"
 }
 locals {
   name    = "debian"
