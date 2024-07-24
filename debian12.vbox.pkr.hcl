@@ -69,18 +69,11 @@ build {
   name = var.name
 
   sources = ["source.virtualbox-iso.debian"]
-  provisioner "shell-local" {
-    environment_vars = [
-      "VM_NAME=${local.vm_name}"
-    ]
-    script = "./scripts/vboxsf.sh"
-  }
-
   provisioner "shell" {
     scripts = [
-      "./scripts/vboxsf_mount.sh",
       "./scripts/k8s_install.sh",
       "./scripts/ansible_install.sh",
+      "./scripts/k9s_install.sh",
     ]
     execute_command = "echo 'packer' | sudo -S -E bash '{{ .Path }}' '${packer.version}'"
   }
