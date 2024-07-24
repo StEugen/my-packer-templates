@@ -23,7 +23,7 @@ echo packer | sudo apt-get install \
 	ca-certificates \
 	curl \
 	gnupg \
-	lsb-release
+	lsb-release -y
 
 # containerd
 echo packer | sudo install -m 0755 -d /etc/apt/keyrings
@@ -35,7 +35,7 @@ echo \
 	sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
 echo packer | sudo apt-get update
-echo packer | sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+echo packer | sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 echo packer | sudo mkdir -p /etc/containerd
 echo packer | sudo bash -c 'containerd config default > /etc/containerd/config.toml'
 echo packer | sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/config.toml
