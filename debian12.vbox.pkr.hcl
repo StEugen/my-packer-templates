@@ -71,6 +71,7 @@ build {
   sources = ["source.virtualbox-iso.debian"]
   provisioner "shell" {
     scripts = [
+      "./scripts/comment_cdrom.sh",
       "./scripts/k8s_install.sh",
       "./scripts/ansible_install.sh",
       "./scripts/k9s_install.sh",
