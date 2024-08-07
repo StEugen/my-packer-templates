@@ -73,7 +73,7 @@ build {
   sources = [
     "source.virtualbox-iso.ubuntu",
   ]
-
+ # TODO: check why autoinstall is not working
   provisioner "file" {
     source      = "/var/log/installer/autoinstall-user-data"
     destination = "installers/autoinstall-user-data.new"
