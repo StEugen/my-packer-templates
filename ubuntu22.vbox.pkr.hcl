@@ -8,15 +8,14 @@ packer {
   }
 }
 
-# http://releases.ubuntu.com/
 variable "version" {
   type    = string
-  default = "22.04"
+  default = "jammy"
 }
 
 variable "iso" {
   type    = string
-  default = "ubuntu-22.04.3-live-server-amd64.iso"
+  default = "ubuntu-22.04.4-live-server-amd64.iso"
 }
 
 variable "name"{
