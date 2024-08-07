@@ -1,0 +1,90 @@
+autoinstall:
+  refresh-installer:
+    update: no 
+  apt:
+    disable_components: []
+    geoip: true
+    preserve_sources_list: false
+    primary:
+      - arches:
+          - amd64
+          - i386
+        uri: http://gb.archive.ubuntu.com/ubuntu
+      - arches:
+          - default
+        uri: http://ports.ubuntu.com/ubuntu-ports
+  drivers:
+    install: false
+  early-commands:
+    - systemctl stop sshd 
+  identity:
+    hostname: ubuntu-server
+    password: packer 
+    realname: packer
+    username: packer
+  kernel:
+    package: linux-generic
+  keyboard:
+    layout: gb
+    toggle: null
+    variant: ''
+  late-commands:
+  - 'echo "packer ALL=(ALL) NOPASSWD: ALL" > /target/etc/sudoers.d/packer' 
+  locale: ru_RU.UTF-8
+  network:
+    ethernets:
+      enp0s3:
+        dhcp4: true
+    version: 2
+  packages:
+    - apt-transport-https
+    - build-essential
+    - bash-completion
+    - curl
+    - gnupg
+    - iptables
+    - iputils-ping
+    - less
+    - openssh-server
+    - procps
+    - psmisc
+    - tmux
+    - vim
+    - wget
+    - zip
+    - unzip
+  #proxy: http://proxy_host:proxy_port/
+  #shutdown: "poweroff"
+  source:
+    id: ubuntu-server
+    search_drivers: false
+  ssh:
+    # needed by Packer to log in and finish configuring
+    allow-pw: true
+    allow_public_ssh_keys: true
+  install-server: true
+  storage:
+    swap:
+      size: 0
+    layout:
+      name: lvm
+      match:
+        size: largest
+  timezone: UTC
+  updates: security
+  user-data:
+   disable_root: true
+   timezone: UTC 
+   package_upgrade: true
+  users:
+    - default
+    - name: packer
+      passwd: 'packer'
+      shell: /bin/bash
+      lock-passwd: false
+      ssh_pwauth: True
+      chpasswd: { expire: False }
+      sudo: ALL=(ALL) NOPASSWD:ALL
+      groups: users, dialout, sudo, wheel
+      ssh_a
+  version: 1
